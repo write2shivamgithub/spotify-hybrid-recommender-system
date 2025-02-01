@@ -1,0 +1,27 @@
+1. Clone or Initialize Git Repository
+
+	cd spotify-hybrid-recommender-system
+	git init
+
+2. Initialize DVC
+	dvc init
+
+3. Create a Local DVC Remote (data_storage)
+	mkdir -p ../data_storage
+	dvc remote add -d data_storage ../data_storage
+
+4. Add Your Large Datasets to DVC
+	dvc add "data/Music Info.csv"
+	dvc add "data/User Listening History.csv"
+
+5. Update .gitignore to Prevent Tracking Large Files
+	/Music Info
+	/User Listening History
+
+6. Commit and Push to GitHub
+	git commit -m "Initialize Git and DVC with dataset tracking"
+	git push origin main  # Change branch if needed
+
+
+7. DVC push to local storage
+	dvc push
