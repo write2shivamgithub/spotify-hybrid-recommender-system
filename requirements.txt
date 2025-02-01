@@ -4,3 +4,4 @@ scikit-learn
 joblib
 scipy
 category-encoders
+streamlit
