@@ -10,7 +10,7 @@ from data_cleaning import data_for_content_filtering
 from scipy.sparse import save_npz
 
 # Cleaned Data Path
-CLEANED_DATA_PATH = "data/cleaned_data.csv"
+CLEANED_DATA_PATH = "data/cleaned_data.csv" # 50 k songs data
 # cols to transform
 frequency_enode_cols = ['year']
 ohe_cols = ['artist',"time_signature","key"]
@@ -88,7 +88,7 @@ def calculate_similarity_scores(input_vector, data):
     
     return similarity_scores
 
-def recommend(song_name, songs_data, transformed_data, k=10):
+def content_recommendation(song_name, artist_name, songs_data, transformed_data, k=10):
     """
     Recommends top k songs similar to the given song based on content-based filtering.
     Parameters:
@@ -101,8 +101,10 @@ def recommend(song_name, songs_data, transformed_data, k=10):
     """
     # convert song name to lowercase
     song_name = song_name.lower()
+    # convert the artist name to lowercase
+    artist_name = artist_name.lower()
     # filter out the song from data
-    song_row = songs_data.loc[songs_data["name"] == song_name]
+    song_row = songs_data.loc[(songs_data["name"] == song_name) & (songs_data['artist'] == artist_name)]
     # get the index of song
     song_index = song_row.index[0]
     # generate the input vector
@@ -117,18 +119,14 @@ def recommend(song_name, songs_data, transformed_data, k=10):
     top_k_list = top_k_songs_names[['name','artist','spotify_preview_url']].reset_index(drop=True)
     return top_k_list
 
-def test_recommendations(data_path, song_name, k=10):
+def main(data_path):
     """
     Test the recommendations for a given song using content-based filtering.
     Parameters:
     data_path (str): The path to the CSV file containing the song data.
-    song_name (str): The name of the song for which recommendations are to be generated.
-    k (int, optional): The number of top similar songs to return. Default is 10.
     Returns:
     None: Prints the top k recommended songs based on content similarity.
     """
-    # convert song name to lowercase
-    song_name = song_name.lower()
     # load the data
     data = pd.read_csv(data_path)
     # clean the data
@@ -139,21 +137,6 @@ def test_recommendations(data_path, song_name, k=10):
     transformed_data = transform_data(data_content_filtering)
     #save transformed data
     save_transformed_data(transformed_data,"data/transformed_data.npz")
-    # filter out the song from data
-    song_row = data.loc[data["name"] == song_name]
-    print(song_row)
-    # get the index of song
-    song_index = song_row.index[0]
-    # generate the input vector
-    input_vector = transformed_data[song_index].reshape(1,-1)
-    # calculate similarity scores
-    similarity_scores = calculate_similarity_scores(input_vector, transformed_data)
-    # get the top k songs
-    top_k_songs_indexes = np.argsort(similarity_scores.ravel())[-k-1:-1][::-1]
-    # get the top k songs names
-    top_k_songs = data.iloc[top_k_songs_indexes]
-    # print the top k songs
-    print(top_k_songs)
-    
+
 if __name__ == "__main__":
-    test_recommendations(CLEANED_DATA_PATH, "Hips Don't Lie")
+    main(CLEANED_DATA_PATH)
