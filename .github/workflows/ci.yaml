@@ -29,7 +29,7 @@ jobs:
       - name: DVC Pull
         run: |
           dvc pull
-      - name: Run Appllication
+      - name: Run Application
         run: |
           nohup streamlit run app.py --server.port 8000 &
           sleep 30 
