@@ -1,4 +1,4 @@
 [core]
-    remote = data_storage
-['remote "data_storage"']
-    url = D:\data_storage_dvc\hybrid-recommender
+    remote = myremote
+['remote "myremote"']
+    url = s3://spotify-hybrid-recommendersytem-remote

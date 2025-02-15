@@ -8,3 +8,5 @@ streamlit
 dask[complete]
 dvc
 seaborn
+dvc[s3]
+matplotlib
