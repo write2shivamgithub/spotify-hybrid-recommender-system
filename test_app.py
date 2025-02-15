@@ -15,5 +15,5 @@ def test_app_loading():
     # wait for the app to load
     time.sleep(60)
     status_code = get_app_status(app_url)
-    assert status_code == 200, 'Unable to load Streamlit App'
+    assert status_code == 200, 'Unable to load Streamlit app'
     print('Streamlit App Loaded Successfully')
