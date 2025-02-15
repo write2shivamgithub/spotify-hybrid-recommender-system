@@ -1,8 +1,0 @@
-#AWS User Keys
-
-Access Key:AKIA6NGS2NKYRSP6TSVL
-
-Secret Access Key: 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
-
-# DVC remote path
-DVC Remote: s3://spotify-hybrid-recommendersytem-remote
