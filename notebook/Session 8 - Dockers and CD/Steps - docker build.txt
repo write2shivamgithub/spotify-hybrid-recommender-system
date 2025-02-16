@@ -1,0 +1,10 @@
+1. After writing out the dockerfile instruction
+
+2. To build image in local
+	# docker build -t spotify_hybrid_recommender_system:v0.1.0 .
+
+3. To run the container locally
+	# docker run --name hybrid_recsys -d -p 8000:8000 spotify_hybrid_recommender_system:v0.1.0 
+
+4. To check the running container
+	# docker ps
