@@ -1,0 +1,7 @@
+1. IAM - Left corner 'Roles'
+2. Create role
+3. Click On AWS service
+	Use case: CodeDeploy
+4.Next
+5. Role name: codedeploy-service-role
+6. Create role

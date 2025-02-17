@@ -1,0 +1,55 @@
+Commands to install Docker and AWS CLI V2 on EC2 instances
+
+# Update the package lists
+sudo apt-get update -y
+
+# Install Docker
+sudo apt-get install -y docker.io
+
+# Start and enable Docker service
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add 'ubuntu' user to the 'docker' group to run Docker commands without 'sudo'
+sudo usermod -aG docker ubuntu
+	close the instance and open new instance with 'connect'
+		docker --version
+
+# Install necessary utilities
+sudo apt-get install -y unzip curl
+
+# Download and install AWS CLI
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/home/ubuntu/awscliv2.zip"
+
+unzip -o /home/ubuntu/awscliv2.zip -d /home/ubuntu/
+
+sudo /home/ubuntu/aws/install
+	aws --version
+
+# Clean up the AWS CLI installation files
+rm -rf /home/ubuntu/awscliv2.zip/home/ubunu/aws
+clear
+
+# Authenticate
+aws configure
+
+_________________________________________________________
+
+
+Docker Commands
+
+# login and authenticate
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 990432094897.dkr.ecr.us-east-1.amazonaws.com
+
+# pull the docker image
+docker pull 990432094897.dkr.ecr.us-east-1.amazonaws.com/spotify_hybrid_recsys:latest
+
+# change image tags
+docker tag 990432094897.dkr.ecr.us-east-1.amazonaws.com/spotify_hybrid_recsys:latest spotify_hybrid_recsys:latest
+	To check docker image --> docker image ls
+
+# Run the container
+docker run -d --name hybrid_recsys -p 8000:8000 spotify_hybrid_recsys:latest
+	To check container running --> docker ps
+

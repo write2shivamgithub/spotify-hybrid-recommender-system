@@ -1,0 +1,13 @@
+1. Go to IAM
+2. Left corner - Roles
+3. Click on create role
+4. Choose AWS Services
+5. Use case - choose "EC2" then click on NEXT
+6. Add Permission:
+	- AmazonEC2ContainerRegistryFullAccess
+	- AmazonEC2RoleforAWSCodeDeploy
+	- AmazonS3ReadOnlyAccess
+	then click for NEXT
+7. Role Details:
+	Role name - ec2_codedeploy_role
+	then click on "Create role"

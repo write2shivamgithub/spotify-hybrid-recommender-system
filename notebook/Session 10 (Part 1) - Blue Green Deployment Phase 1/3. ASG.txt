@@ -1,0 +1,29 @@
+1. AutoScaling group name: hybrid-recsys-asg
+2. Launch template: hybrid-recsys-template
+3. Next
+4. Availability zones and subnets
+	select two zone
+5. Availability zone distribution
+	- balance best effort
+6. load balancing: Attach to a new load balancer 
+7. Attach to a new load balancer
+	- Load balancer type: Application Load Balancer
+	- Load balancer name: hybrid-recsys-elb
+	- load balancer scheme: internet-facing
+8. Listeners and routing
+	Protocol: HTTP
+	Port: 80
+	Default routing: Create a target group
+	New target group name: hybrid-recsys-tg1
+9. Enable the health checks
+	turn on elb health checks
+10. Next
+11. Desired capacity: 1
+	Min desired capacity: 1
+	Max desired capacity: 3
+12. Automatic scaling: Target tracking scaling policy
+	- Average CPU Utilization[target value]: 50%
+13. Additional Settings
+	Monitoring: Enable group metric collection within CloudWatch
+14. Next
+15. Create Auto Scaling group
