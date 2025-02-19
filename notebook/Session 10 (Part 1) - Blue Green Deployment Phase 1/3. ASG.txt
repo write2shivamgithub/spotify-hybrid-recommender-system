@@ -21,7 +21,7 @@
 11. Desired capacity: 1
 	Min desired capacity: 1
 	Max desired capacity: 3
-12. Automatic scaling: Target tracking scaling policy
+12. Automatic scaling: Choose "Target tracking scaling policy"
 	- Average CPU Utilization[target value]: 50%
 13. Additional Settings
 	Monitoring: Enable group metric collection within CloudWatch

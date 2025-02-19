@@ -6,10 +6,10 @@
 4. Make a tick on auto scaling guidance
 5. Instance Type - t2.micro 
 6. key pair login
-7. Security group ->  existing 
+7. Security group ->  existing --> spotify-security-group
 8. Advance details:
 	- IAM instance profile: ec2_codedeploy_role
-9. Scripts to add on: To install my codedeploy agent each of my machine(ec 2)
+9. Scripts to add on: To install my codedeploy agent each of my machine(ec2)
 
 #!/bin/bash
 

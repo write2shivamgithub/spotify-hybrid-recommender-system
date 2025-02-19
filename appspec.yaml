@@ -1,0 +1,19 @@
+# AppSpec.yml file used in AWS CodeDeploy for automating the deployment of an application on a Linux-based EC2 instance
+version: 0.0
+os: linux
+
+# section defines file transfer from the source repository (e.g., GitHub, S3) to the target EC2 instance.
+files:
+  - source: /
+    destination: /home/ubuntu/app
+
+# Hook Section: Defines the scripts that should run at different stages of the deployment lifecycle
+hooks:
+  BeforeInstall:
+    - location: deploy/scripts/install_dependencies.sh
+      timeout: 300
+      runas: ubuntu
+  ApplicationStart:
+    - location: deploy/scripts/start_docker.sh
+      timeout: 3000
+      runas: ubuntu
