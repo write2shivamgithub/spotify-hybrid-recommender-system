@@ -10,7 +10,8 @@
 8. Environment configuration: Automatically copy Amazon EC2 Auto Scaling group
 9. Choose aws ec2 asg, where current application is deployed: hybrid-recsys-asg
 10. Deployment Settings:
-	Traffic reou rg instances in the deployment group
+	- Traffic rerouting: Reoute traffic immediately
+	- Terminate the original instances in the deployment group
 	Deployment configuration:CodeDeployDefault.AllAtOnce
 11. Load Balancer
 	Choose target groups: hybrid-recsys-tg1
